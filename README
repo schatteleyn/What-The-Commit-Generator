@@ -1,1 +1,4 @@
-Return a commit message from whatthecommit.com
+Return a commit message from whatthecommit.com and make a commit with git
+TODO:
+- Verify that the input is in the git option
+- implement svn
