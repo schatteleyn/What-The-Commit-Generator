@@ -3,8 +3,10 @@ URL = "http://whatthecommit.com/"
 
 require'Net/http'
 getCommit = Net::HTTP.get(URI.parse(URL)).match(/<p>(.*?)<\/p>/m)[1].strip
+gitr = /[acCzsneiovq]/
+svnr =  /[qN]/
 
 ARGV.each do |value|
-  puts `git commit -#{value} "#{getCommit}"`
+  puts `git commit -#{value}m "#{getCommit}"`
 end
 puts getCommit
