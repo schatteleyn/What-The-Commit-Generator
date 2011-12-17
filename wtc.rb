@@ -7,6 +7,8 @@ gitr = /[acCzsneiovq]/
 svnr =  /[qN]/
 
 ARGV.each do |value|
-  puts `git commit -#{value}m "#{getCommit}"`
+  if value.match(gitr)
+    puts `git commit -#{value}m "#{getCommit}"`
+  end
 end
 puts getCommit
