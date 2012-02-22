@@ -7,8 +7,16 @@ gitr = /[acCzsneiovq]/
 svnr =  /[qN]/
 
 ARGV.each do |value|
-  if value.match(gitr)
+  if ARGV.empty?
+    $stderr.puts "required argument"
+    exit 1
+  elsif value.match(gitr)
     puts `git commit -#{value}m "#{getCommit}"`
+  else
+    $stderr.puts "wrong argument"
+    exit 1
   end
 end
 puts getCommit
+
+#Must check optparse & ostruct
