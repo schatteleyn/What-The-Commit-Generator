@@ -19,11 +19,11 @@ opts = OptionParser.new do |opts|
     end
     
     opts.on("-g", "--git OPT", [:a, :c, :C, :z, :s, :n, :e, :i, :o, :v, :q], "Commit with git") do |g|
-      puts `git commit -#{g}m "#{getCommit}"
+      puts `git commit -"#{g}"m "#{getCommit}"`
     end
     
     opts.on("-s", "--svn OPT", [:q, :N], "Commit with svn") do |s|
-      puts `svn commit -#{s}m "#{getCommit}"
+      puts `svn commit -"#{s}"m "#{getCommit}"`
     end
 
    # ARGV.each do |value|
