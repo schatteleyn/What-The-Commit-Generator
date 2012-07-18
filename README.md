@@ -6,4 +6,4 @@ For more information about the parameter, see [the man page](http://linux.die.ne
 
 TODO:
 
-- implement svn
+- Update help page
