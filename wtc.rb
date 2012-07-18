@@ -9,9 +9,9 @@ URL = "http://whatthecommit.com/"
 getCommit = Net::HTTP.get(URI.parse(URL)).match(/<p>(.*?)<\/p>/m)[1].strip
 
 options = {}
-opts = OptionParser.new do |opts|
+optparse = OptionParser.new do |opts|
 
-    opts.banner = "Usage: wtc.rb [option][argument]"
+    opts.banner = "Usage: ruby wtc.rb [option][argument]"
     
     opts.on( '-h', '--help', 'Display this screen') do
       puts opts
@@ -26,6 +26,14 @@ opts = OptionParser.new do |opts|
       puts `svn commit -"#{s}"m "#{getCommit}"`
     end
 
+end
+
+optparse.parse!
+puts "Add -h for help"
+pp "Options:", options
+pp "ARGV:", ARGV
+puts "Commit message: #{getCommit}"
+
    # ARGV.each do |value|
    #   if ARGV.empty?
    #     $stderr.puts "required argument"
@@ -39,10 +47,3 @@ opts = OptionParser.new do |opts|
    # end
    # puts getCommit
 
-end
-
-optparse.parse!
-
-pp "Options:", options
-pp "ARGV:", ARGV
-puts getCommit
