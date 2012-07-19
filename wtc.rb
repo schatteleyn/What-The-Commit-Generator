@@ -8,13 +8,15 @@ URL = "http://whatthecommit.com/"
 
 getCommit = Net::HTTP.get(URI.parse(URL)).match(/<p>(.*?)<\/p>/m)[1].strip
 
-options = {}
 optparse = OptionParser.new do |opts|
 
     opts.banner = "Usage: ruby wtc.rb [option][argument]"
     
     opts.on( '-h', '--help', 'Display this screen') do
       puts opts
+      puts 'The "m" argument is automatically set. You can use the following arguments: '
+      puts 'git: a, c, C, z, s, n, e, i, o, v, a'
+      puts 'svn: q, n'
       exit
     end
     
@@ -30,20 +32,4 @@ end
 
 optparse.parse!
 puts "Add -h for help"
-pp "Options:", options
-pp "ARGV:", ARGV
 puts "Commit message: #{getCommit}"
-
-   # ARGV.each do |value|
-   #   if ARGV.empty?
-   #     $stderr.puts "required argument"
-   #     exit 1
-   #   elsif value.match(gitr)
-   #     puts `git commit -#{value}m "#{getCommit}"`
-   #   else
-   #     $stderr.puts "wrong argument"
-   #     exit 1
-   #   end
-   # end
-   # puts getCommit
-
